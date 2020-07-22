@@ -9,7 +9,6 @@ from torch.autograd import Variable
 import cv2
 import sys
 import numpy as np
-from skimage import segmentation
 import torch.nn.init
 import random
 

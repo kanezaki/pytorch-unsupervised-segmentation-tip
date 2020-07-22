@@ -10,7 +10,6 @@ import cv2
 import sys
 import os
 import numpy as np
-from skimage import segmentation
 import torch.nn.init
 import random
 import glob

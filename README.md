@@ -21,7 +21,7 @@ This is an extension of our [previous work](https://github.com/kanezaki/pytorch-
 
 ## Requirements
 
-python3, pytorch, opencv2, scikit-image, tqdm
+pytorch, opencv2, tqdm
 
 ## Getting started
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Unsupervised Segmentation</title>
+    
+  </head>
+  
+  <body>
+    <div class="container" style="max-width: 900px;">
+      
+      
+      
+      <h5 class="text-center"><em><a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=83">IEEE Transactions on Image Processing</a></em></h5>
+      
+      
+      <h2 class="text-center">Unsupervised Learning of Image Segmentation Based on Differentiable Feature Clustering</h2>
+      
+      
+      <div class="row">
+	
+	<div class="col-md-4">
+	  <h5 class="text-center"><a href="https://sites.google.com/view/wonjik-kim/">Wonijk Kim*</a><br>Tokyo Tech & AIST</h5>
+	</div>
+	<div class="col-md-4">
+	  <h5 class="text-center"><a href="https://kanezaki.github.io/">Asako Kanezaki*</a><br>Tokyo Tech & AIST</h5>
+	</div>
+	<div class="col-md-4">
+	  <h5 class="text-center"><a href="http://www.ok.sc.e.titech.ac.jp/~mtanaka/">Masayuki Tanaka</a><br>Tokyo Tech & AIST</h5>
+	</div>
+	
+      </div>
+
+      <div class="row">
+	<div class="col-md-12">
+	    <img src="https://kanezaki.github.io/media/unsupervised_image_segmentation_with_scribbles.png" class="img-fluid">
+	    *W. Kim and A. Kanezaki contributed equally to this work.
+	</div>
+      </div>
+
+      <br>
+
+<h3>Abstract</h3>
+<div class="row">
+    <div class="col-md-12">
+      <p>
+	The usage of convolutional neural networks (CNNs) for unsupervised image segmentation was investigated in this study.
+	Similar to supervised image segmentation, the proposed CNN assigns labels to pixels that denote the cluster to which the pixel belongs.
+	In unsupervised image segmentation, however, no training images or ground truth labels of pixels are specified beforehand.
+	Therefore, once a target image is input, the pixel labels and feature representations are jointly optimized, and their parameters are updated by the gradient descent.
+	In the proposed approach, label prediction and network parameter learning are alternately iterated to meet the following criteria:
+	(a) pixels of similar features should be assigned the same label,
+	(b) spatially continuous pixels should be assigned the same label, and 
+	(c) the number of unique labels should be large.
+	Although these criteria are incompatible, the proposed approach minimizes the combination of similarity loss and spatial continuity loss to find a plausible solution of label assignment that balances the aforementioned criteria well.
+	The contributions of this study are four-fold.
+	First, we propose a novel end-to-end network of unsupervised image segmentation that consists of normalization and an argmax function for differentiable clustering.
+	Second, we introduce a spatial continuity loss function that mitigates the limitations of fixed segment boundaries possessed by previous work.
+	Third, we present an extension of the proposed method for segmentation with scribbles as user input, which showed better accuracy than existing methods while maintaining efficiency.
+	Finally, we introduce another extension of the proposed method: unseen image segmentation by using networks pre-trained with a few reference images without re-training the networks.
+	The effectiveness of the proposed approach was examined on several benchmark datasets of image segmentation.
+      </p>
+    </div>
+</div>
+
+
+<h3>Publication</h3>
+<div class="row">
+    <div class="col-md-12">
+      <ul>
+	Wonjik Kim*, Asako Kanezaki*, and Masayuki Tanaka.
+	<BR>"Unsupervised Learning of Image Segmentation Based on Differentiable Feature Clustering."
+	<BR><I>IEEE Transactions on Image Processing</I>, accepted, 2020.
+	<BR><b>*equal contributions</b>
+	<BR><a href="https://arxiv.org/abs/2007.09990">arXiv</a>
+      </ul>
+    </div>
+</div>
+
+<h3>Code</h3>
+<div class="row">
+    <div class="col-md-12">
+      <a href="https://github.com/kanezaki/pytorch-unsupervised-segmentation-tip">pytorch-unsupervised-segmentation-tip</a>
+      <br>
+      <br>
+    </div>
+</div>
+
+<h3>BibTeX</h3>
+<div class="row">
+    <div class="col-md-12">
+      <pre>@article{kim2020_unsupervised_segmentation,
+	title={Unsupervised Learning of Image Segmentation Based on Differentiable Feature Clustering},
+	author={Wonjik Kim and Asako Kanezaki and Masayuki Tanaka},
+	journal={IEEE Transactions on Image Processing},
+	year={2020},}
+</pre>
+    </div>
+</div>
+
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

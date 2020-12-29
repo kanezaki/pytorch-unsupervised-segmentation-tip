@@ -105,24 +105,25 @@ for batch_idx in range(args.maxIter):
                 data = data.cuda()
             data = Variable(data)
     
-            HPy_target = torch.zeros(resized_im.shape[1]-1, resized_im.shape[2], args.nChannel)
-            HPz_target = torch.zeros(resized_im.shape[1], resized_im.shape[2]-1, args.nChannel)
+            HPy_target = torch.zeros(data.shape[0], resized_im.shape[1]-1, resized_im.shape[2], args.nChannel)
+            HPz_target = torch.zeros(data.shape[0], resized_im.shape[1], resized_im.shape[2]-1, args.nChannel)
             if use_cuda:
                 HPy_target = HPy_target.cuda()
                 HPz_target = HPz_target.cuda()
 
             # forwarding
             optimizer.zero_grad()
-            output = model( data )[ 0 ]
-            output = output.permute( 1, 2, 0 ).contiguous().view( -1, args.nChannel )
+            output = model( data )
+            output = output.permute( 0, 2, 3, 1 ).contiguous().view( data.shape[0], -1, args.nChannel )
 
-            outputHP = output.reshape( (resized_im.shape[1], resized_im.shape[2], args.nChannel) )
+            outputHP = output.reshape( (data.shape[0], resized_im.shape[1], resized_im.shape[2], args.nChannel) )
     
-            HPy = outputHP[1:, :, :] - outputHP[0:-1, :, :]
-            HPz = outputHP[:, 1:, :] - outputHP[:, 0:-1, :]    
+            HPy = outputHP[:, 1:, :, :] - outputHP[:, 0:-1, :, :]
+            HPz = outputHP[:, :, 1:, :] - outputHP[:, :, 0:-1, :]    
             lhpy = loss_hpy(HPy,HPy_target)
             lhpz = loss_hpz(HPz,HPz_target)
 
+            output = output.reshape( output.shape[0] * output.shape[1], -1 )
             ignore, target = torch.max( output, 1 )
 
             loss = args.stepsize_sim * loss_fn(output, target) + args.stepsize_con * (lhpy + lhpz)
